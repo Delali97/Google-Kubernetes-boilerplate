@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                sh 'git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
                 sh 'pwd'
                 sh 'ls -la'
             }
