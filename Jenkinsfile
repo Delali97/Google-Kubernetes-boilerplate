@@ -11,9 +11,9 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'cd /var/jenkins_home/workspace/bootcamp/app/adservice'
+                sh 'ls -la'
                 sh 'docker --version'
                 sh 'sudo docker build -t app/adservice .'
-                sh 'ls -la'
             }
         }
     }
