@@ -2,41 +2,18 @@ pipeline {
     agent any
     
     stages {
-        stage('Gitclone') {
+        stage('Clone Repository') {
             steps {
-                // Get some code from a GitHub repository
-                //git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/folu-web/Google-Kubernetes-boilerplate.git'
                 sh 'pwd'
                 sh 'ls -la'
             }
         }
         stage('Build Docker Image') {
             steps {
-                sh 'cd /var/jenkins_home/workspace/bootcamp'
+                sh 'cd /var/jenkins_home/workspace/bootcamp/app/adservice'
                 sh 'docker --version'
-                sh 'cd app/adservice'
                 sh 'sudo docker build -t app/adservice .'
-               
             }
         }
-        
-        stage('Test') {
-            steps {
-                sh 'sudo docker run --name adservice -d -p 7700:9555 app/adservice'
-            }
-        }
-        
-//         stage('Push to Docker Hub') {
-//             steps {
-//                 sh 'docker login -u dela;ixx -p dckr_pat_3htEwdzErAa3N4Doxkyo_XcBx6k'
-//                 sh 'docker push frontend2'
-//             }
-//         }
-        
-//         stage('Deploy to Kubernetes') {
-//             steps {
-//                 sh 'kubectl apply -f <kubernetes-manifest-file>.yml'
-//             }
-//         }
     }
 }
