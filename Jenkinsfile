@@ -2,6 +2,14 @@ pipeline {
     agent any
     
     stages {
+        stage('Gitclone') {
+            steps {
+                // Get some code from a GitHub repository
+//                 git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/folu-web/Google-Kubernetes-boilerplate.git'
+                sh 'pwd'
+                sh 'ls -la'
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 sh 'docker --version'
