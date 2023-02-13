@@ -12,6 +12,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
+                sh 'cd /var/jenkins_home/workspace/bootcamp'
                 sh 'docker --version'
                 sh 'cd app/adservice'
                 sh 'sudo docker build -t app/adservice .'
