@@ -11,16 +11,16 @@ pipeline {
         sh 'sudo apt install terraform'
       }
     }
-    stage ('Install AWS CLI') {
-      steps {
-      sh 'sudo apt install unzip -y'
-      sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
-      sh 'sudo rm -rf ./aws'
-      sh 'sudo rm -rf /usr/local/aws-cli'
-      sh 'unzip awscliv2.zip'
-      sh 'sudo ./aws/install'
+      stage ('Install AWS CLI') {
+        steps {
+        sh 'sudo apt install unzip -y'
+        sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
+        sh 'sudo rm -rf ./aws'
+        sh 'sudo rm -rf /usr/local/aws-cli'
+        sh 'unzip awscliv2.zip'
+        sh 'sudo ./aws/install'
+        }
       }
-    }
     stage ('AWS CLI CREDENTIALS') {
       steps {
         sh 'export AWS_ACCESS_KEY_ID=AKIA4IJCS4QYFZN7YKVW'
@@ -29,9 +29,9 @@ pipeline {
     }
     stage ('Install KubeCTL') {
       steps {
-        sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl'
-        sh 'curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256'
-        sh 'echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check'
+        sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
+        sh 'curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"'
+        sh 'echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check"'
         sh 'sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl'
         sh 'kubectl version --client --output=yaml'
       }
