@@ -23,8 +23,7 @@ pipeline {
       }
     stage ('AWS CLI CREDENTIALS') {
       steps {
-        sh 'export AWS_ACCESS_KEY_ID=AKIA4IJCS4QYFZN7YKVW'
-        sh 'export AWS_SECRET_ACCESS_KEY=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'
+        
       }
     }
     stage ('Install KubeCTL') {
