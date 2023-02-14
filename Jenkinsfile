@@ -23,7 +23,8 @@ pipeline {
       }
     stage ('AWS CLI CREDENTIALS') {
       steps {
-        
+        sh 'export AWS_ACCESS_KEY_ID=AKIA4IJCS4QYFZN7YKVW'
+        sh 'export AWS_SECRET_ACCESS_KEY=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'
       }
     }
     stage ('Install KubeCTL') {
@@ -44,7 +45,7 @@ pipeline {
     }
     stage ('Create EKS Cluster') {
       steps {
-       sh 'eksctl create cluster --name bootcampcluster --region us-east-2'
+       sh 'eksctl create cluster -f app/ --name bootcampcluster --region us-east-2'
        sh 'kubectl get nodes -o wide'
        sh 'kubectl get pods -A -o wide'
       }
