@@ -22,7 +22,7 @@ managedNodeGroups:
     overrideBootstrapCommand: |
       #!/bin/bash
       /etc/eks/bootstrap.sh demo-eks-cluster
-    instanceType: t3.large
+    instanceType: t2.micro
     minSize: 1
     maxSize: 1
     desiredCapacity: 1
@@ -32,7 +32,7 @@ managedNodeGroups:
     subnets:
       - pub-us-east-2a
       - pub-us-east-2b
-      - pub-us-east-21c
+      - pub-us-east-2c
     labels: {role: dev}
     ssh:
       publicKeyName: test.pem
