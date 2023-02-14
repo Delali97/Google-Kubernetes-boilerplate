@@ -21,11 +21,7 @@ pipeline {
         sh 'sudo ./aws/install'
         }
       }
-    stage ('AWS CLI CREDENTIALS') {
-      steps {
-        
-      }
-    }
+    
     stage ('Install KubeCTL') {
       steps {
         sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
