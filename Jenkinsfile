@@ -28,7 +28,7 @@ pipeline {
         sh 'export AWS_SECRET_ACCESS_KEY=F2tk8s7ySuvoI6JSaCg2bfXZpNHxoFcQsC76/XB3'
       }
     }
-      stage ('Install KubeCTL')
+    stage ('Install KubeCTL') {
       steps {
         sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl'
         sh 'curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256'
