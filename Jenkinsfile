@@ -19,6 +19,7 @@ pipeline {
       sh 'sudo rm -rf /usr/local/aws-cli'
       sh 'unzip awscliv2.zip'
       sh 'sudo ./aws/install'
+      sh 'pwd'
       sh './awscli.sh'
       }
     }
