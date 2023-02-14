@@ -19,7 +19,6 @@ pipeline {
       sh 'sudo rm -rf /usr/local/aws-cli'
       sh 'unzip awscliv2.zip'
       sh 'sudo ./aws/install'
-      sh 'sudo cp ./awscli.sh /var/lib/jenkins/workspace/bootcamp'
       }
     }
     stage ('AWS CLI CREDENTIALS') {
