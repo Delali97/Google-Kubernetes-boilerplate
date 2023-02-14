@@ -44,7 +44,7 @@ pipeline {
        //sh 'cd Google-Kubernetes-boilerplate'
        sh 'ls -la'
        sh 'pwd'
-        dir('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate/testing.yaml') {
+        dir('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate') {
            sh 'ls -la'
            sh 'eksctl create cluster -f testing.yaml --dry-run'
            sh 'eksctl create cluster -f testing.yaml'
