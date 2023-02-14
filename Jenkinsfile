@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Required GPG') {
+    stage('Install Terraform & Required GPG') {
       steps {
         sh 'sudo apt update && sudo apt install gpg'
         sh 'wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg'
@@ -34,6 +34,13 @@ pipeline {
         sh 'echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check'
         sh 'sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl'
         sh 'kubectl version --client --output=yaml'
+      }
+    }
+    stage ('Install EKSCTL') {
+      steps {
+        sh 'curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp'
+        sh 'sudo mv /tmp/eksctl /usr/local/bin'
+        sh 'eksctl version'
       }
     }
   }
