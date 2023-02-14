@@ -3,7 +3,6 @@ pipeline {
   stages {
     stage('Required GPG') {
       steps {
-        sh 'apt-get update && apt-get upgrade -y && apt install sudo tasksel -y'
         sh 'sudo apt update && sudo apt install gpg'
         sh 'wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg'
         sh 'gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint'
