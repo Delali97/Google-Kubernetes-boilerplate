@@ -48,6 +48,8 @@ pipeline {
        sh 'eksctl create cluster --name bootcampcluster --region us-east-2'
        sh 'kubectl get nodes -o wide'
        sh 'kubectl get pods -A -o wide'
+      }
+    }
   }
 }
 
