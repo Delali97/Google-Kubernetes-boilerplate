@@ -40,9 +40,8 @@ pipeline {
     }
     stage ('Create EKS Cluster') {
       steps {
-       sh 'git clone https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
+       //sh 'git clone https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
        sh 'ls -la'
-       sh 'rm -rf Google-Kubernetes-boilerplate'
        sh 'cd Google-Kubernetes-boilerplate'
        sh 'eksctl create cluster -f testing.yaml --dry-run'
        sh 'eksctl create cluster -f testing.yaml'
