@@ -3,18 +3,18 @@ kind: ClusterConfig
 
 metadata:
   name: demo-eks-cluster
-  region: ap-south-1
+  region: us-east-2
   version: "1.21"
 
 vpc:
   subnets:
     public:
-      pub-ap-south-1a: 
-        id: "xxxxxxxx"
-      pub-ap-south-1b: 
-        id: "xxxxxxxx"
-      pub-ap-south-1c: 
-        id: "xxxxxxxx"
+      pub-us-east-2a: 
+        id: "subnet-04fb06e260a946c94"
+      pub-us-east-2b: 
+        id: "subnet-01a9090a570e56327"
+      pub-us-east-2c: 
+        id: "subnet-06b3cae1d80f26a62"
 managedNodeGroups:
   - name: dev-ng-1
     ami: ami-015fd6563bf7915c6
@@ -29,12 +29,12 @@ managedNodeGroups:
     volumeEncrypted: true
     volumeType: gp3
     subnets:
-      - pub-ap-south-1a
-      - pub-ap-south-1b
-      - pub-ap-south-1c
+      - pub-us-east-2a
+      - pub-us-east-2b
+      - pub-us-east-21c
     labels: {role: dev}
     ssh:
-      publicKeyName: Your-EC2-Key-Pair-Name
+      publicKeyName: test.pem
     tags:
       Env: Dev
     iam:
