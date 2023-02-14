@@ -45,7 +45,8 @@ pipeline {
     }
     stage ('Create EKS Cluster') {
       steps {
-       sh 'eksctl create cluster -f cluster.yaml --dry-run'
+       sh 'eksctl create cluster -f testing.yaml --dry-run'
+       sh 'eksctl create cluster -f testing.yaml'
        sh 'kubectl get nodes -o wide'
        sh 'kubectl get pods -A -o wide'
       }
