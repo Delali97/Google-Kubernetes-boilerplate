@@ -31,28 +31,28 @@ pipeline {
         sh 'kubectl version --client --output=yaml'
       }
     }
-    stage ('Install EKSCTL') {
-      steps {
-        sh 'curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp'
-        sh 'sudo mv /tmp/eksctl /usr/local/bin'
-        sh 'eksctl version'
-      }
-    }
-    stage ('Create EKS Cluster') {
-      steps {
-       //sh 'git clone https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
-       //sh 'cd Google-Kubernetes-boilerplate'
-       sh 'ls -la'
-       sh 'pwd'
-        dir('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate') {
-           sh 'ls -la'
-           sh 'eksctl create cluster -f testing.yaml --dry-run'
-           sh 'eksctl create cluster -f testing.yaml'
-           sh 'kubectl get nodes -o wide'
-           sh 'kubectl get pods -A -o wide'
-        }
-      }
-    }
+//     stage ('Install EKSCTL') {
+//       steps {
+//         sh 'curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp'
+//         sh 'sudo mv /tmp/eksctl /usr/local/bin'
+//         sh 'eksctl version'
+//       }
+//     }
+//     stage ('Create EKS Cluster') {
+//       steps {
+//        //sh 'git clone https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
+//        //sh 'cd Google-Kubernetes-boilerplate'
+//        sh 'ls -la'
+//        sh 'pwd'
+//         dir('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate') {
+//            sh 'ls -la'
+//            sh 'eksctl create cluster -f testing.yaml --dry-run'
+//            sh 'eksctl create cluster -f testing.yaml'
+//            sh 'kubectl get nodes -o wide'
+//            sh 'kubectl get pods -A -o wide'
+//         }
+//       }
+//     }
   }
 }
 
