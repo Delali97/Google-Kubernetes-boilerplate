@@ -17,8 +17,7 @@ pipeline {
           withCredentials([aws(credentialsId: 'aws-credentials', region: 'us-east-2')]) {
           sh 'kubectl version --client --output=yaml'
           sh '''
-                set -e
-                eval $(aws eks update-kubeconfig --name bootcampdemo)
+                aws eks update-kubeconfig --name bootcampdemo
                 kubectl config use-context bootcampdemo
                 kubectl apply -f testing.yaml
                 kubectl get node
