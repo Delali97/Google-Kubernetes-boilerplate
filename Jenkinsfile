@@ -8,7 +8,7 @@ pipeline {
           dir('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate/app/adservice') {
             sh 'docker build -t delalixx/adservice .'
             sh 'docker push delalixx/adservice'
-      
+          }
       }
     }
 //     stage('Install Terraform & Required GPG') {
