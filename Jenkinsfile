@@ -14,10 +14,18 @@ pipeline {
 //     }
     stage ('Create Deploy to Yaml file') {
       steps {
-        dir ('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate') {
-        sh 'kubectl version --client --output=yaml'
-        sh 'kubectl get node'  
-        sh 'kubectl apply -f testing.yaml'
+          withCredentials([aws(credentialsId: 'aws-credentials', region: 'us-east-2')]) {
+          dir ('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate') {
+          sh 'kubectl version --client --output=yaml'
+          sh '''
+                set -e
+                eval $(aws eks update-kubeconfig --name bootcampdemo)
+                kubectl config use-context bootcampdemo
+                kubectl get node
+                kubectl apply -f testing.yaml
+                '''
+            }
+          }
         }
       }
     }
