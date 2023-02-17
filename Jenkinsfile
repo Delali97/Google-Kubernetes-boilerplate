@@ -15,7 +15,6 @@ pipeline {
     stage ('Create Deploy to Yaml file') {
       steps {
           withCredentials([aws(credentialsId: 'aws-credentials', region: 'us-east-2')]) {
-          dir ('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate') {
           sh 'kubectl version --client --output=yaml'
           sh '''
                 set -e
@@ -27,7 +26,6 @@ pipeline {
           }
         }
       }
-    }
 //     stage('Install Terraform & Required GPG') {
 //       steps {
 //         sh 'sudo apt update && sudo apt install gpg'
