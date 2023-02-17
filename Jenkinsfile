@@ -14,8 +14,11 @@ pipeline {
 //     }
     stage ('Create Deploy to Yaml file') {
       steps {
+        dir ('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate') {
         sh 'kubectl version --client --output=yaml'
-        sh 'kubectl get nodes'
+        sh 'kubectl get nodes'  
+        sh 'kubectl apply -f testing.yaml'
+        }
       }
     }
 //     stage('Install Terraform & Required GPG') {
