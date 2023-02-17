@@ -21,8 +21,8 @@ pipeline {
                 set -e
                 eval $(aws eks update-kubeconfig --name bootcampdemo)
                 kubectl config use-context bootcampdemo
-                kubectl get node
                 kubectl apply -f testing.yaml
+                kubectl get node
                 '''
           }
         }
