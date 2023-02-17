@@ -1,20 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage ('Testing') {
-      steps {
-          git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
-          sh ''' cd app/adservice
-                  ls
-                  sudo docker --version
-                  sudo docker build -t delalixx/adservice .
-                  sudo docker push delalixx/adservice
-                  '''
-      }
-    }
+//     stage ('Testing') {
+//       steps {
+//           git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
+//           //sh ''' cd app/adservice
+//                   ls
+//                   sudo docker --version
+//                   sudo docker build -t delalixx/adservice .
+//                   sudo docker push delalixx/adservice
+//                   '''
+//       }
+//     }
     stage ('Create Deploy to Yaml file') {
       steps {
         sh 'kubectl version --client --output=yaml'
+        sh 'kubectl get nodes'
       }
     }
 //     stage('Install Terraform & Required GPG') {
