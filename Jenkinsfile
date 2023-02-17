@@ -6,8 +6,8 @@ pipeline {
           git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
           sh 'pwd'
           dir('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate/app/adservice') {
-            sh 'docker build -t delalixx/adservice .'
-            sh 'docker push delalixx/adservice'
+            sh 'sudo docker build -t delalixx/adservice .'
+            sh 'sudo docker push delalixx/adservice'
           }
       }
     }
