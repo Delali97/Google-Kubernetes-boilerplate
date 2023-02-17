@@ -16,7 +16,7 @@ pipeline {
       steps {
         dir ('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate') {
         sh 'kubectl version --client --output=yaml'
-        sh 'kubectl get nodes'  
+        sh 'kubectl get node'  
         sh 'kubectl apply -f testing.yaml'
         }
       }
