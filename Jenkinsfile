@@ -12,6 +12,11 @@ pipeline {
                   '''
       }
     }
+    stage ('Create Deploy to Yaml file') {
+      steps {
+        sh 'kubectl version --client --output=yaml'
+      }
+    }
 //     stage('Install Terraform & Required GPG') {
 //       steps {
 //         sh 'sudo apt update && sudo apt install gpg'
