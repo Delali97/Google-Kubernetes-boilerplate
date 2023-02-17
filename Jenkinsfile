@@ -18,7 +18,8 @@ pipeline {
           sh 'kubectl version --client --output=yaml'
           sh '''
                 aws eks update-kubeconfig --name bootcampdemo
-                kubectl config use-context bootcampdemo
+                kubectl config current-context
+                kubectl config use-context arn:aws:eks:us-east-2:842423002160:cluster/bootcampdemo
                 kubectl apply -f testing.yaml
                 kubectl get node
                 '''
