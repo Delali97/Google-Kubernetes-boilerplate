@@ -24,7 +24,6 @@ pipeline {
                 kubectl get node
                 kubectl apply -f testing.yaml
                 '''
-            }
           }
         }
       }
