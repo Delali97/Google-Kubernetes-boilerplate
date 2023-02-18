@@ -23,12 +23,13 @@ pipeline {
                   '''
         sh ''' sudo docker system prune -af
                  '''
-        dir ('/var/lib/jenkins/workspace/bootcamp/Google-Kubernetes-boilerplate/app/src/cartservice'){
-        sh '''   ls
+        
+        sh '''    sudo chmod 777 app/src
+                  cd app/src/cartservice
+                  ls
                   sudo docker build -t delalixx/cartservice .
                   sudo docker push delalixx/cartservice
                   '''
-         }
         sh ''' sudo docker system prune -af
                  '''
         sh ''' cd app/checkoutservice
