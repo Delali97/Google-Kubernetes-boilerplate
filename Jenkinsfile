@@ -5,7 +5,6 @@ pipeline {
       steps {
           git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
           sh ''' sudo docker system prune -af
-                 sudo docker system prune -y
                  '''
           sh ''' cd app/adservice
                   ls
@@ -13,6 +12,8 @@ pipeline {
                   sudo docker build -t delalixx/adservice .
                   sudo docker push delalixx/adservice
                   '''
+        sh ''' sudo docker system prune -af
+                 '''
          sh ''' cd app/frontend
                   ls
                   sudo docker --version
