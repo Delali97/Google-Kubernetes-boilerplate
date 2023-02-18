@@ -23,7 +23,7 @@ pipeline {
                   '''
         sh ''' sudo docker system prune -af
                  '''
-        sh ''' cd app/cartservice
+        sh ''' cd app/src/cartservice
                   ls
                   sudo docker build -t delalixx/cartservice .
                   sudo docker push delalixx/cartservice
