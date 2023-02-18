@@ -32,6 +32,7 @@ spec:
         env:
         - name: MESSAGE
           value: Hello from my first microservices deployment!
+
 #### END of ADSERVICE ###
 #------------------------------------------------------------------------
 apiVersion: v1
@@ -68,3 +69,40 @@ spec:
         env:
         - name: MESSAGE
           value: Hello from my first microservices front end deployment!
+          
+#### END of FRONTEND ###
+#------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: cartservice
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 2020
+    targetPort: 2020
+  selector:
+    app: cartservice
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cartservice
+  template:
+    metadata:
+      labels:
+        app: cartservice
+    spec:
+      containers:
+      - name: adservice
+        image: delalixx/cartservice:latest
+        ports:
+        - containerPort: 5050
+        env:
+        - name: MESSAGE
+          value: Hello from my first microservices front end deployment!          
