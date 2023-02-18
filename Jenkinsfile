@@ -14,6 +14,8 @@ pipeline {
                   '''
         sh ''' sudo docker system prune -af
                  '''
+        sh ''' sudo docker system prune -af
+                 '''
         sh ''' cd app/frontend
                   ls
                   sudo docker build -t delalixx/frontend .
