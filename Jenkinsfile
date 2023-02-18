@@ -4,6 +4,9 @@ pipeline {
     stage ('Testing') {
       steps {
           git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
+          sh ''' sudo docker system prune -af
+                 sudo docker system prune
+                 '''
           sh ''' cd app/adservice
                   ls
                   sudo docker --version
