@@ -1,17 +1,23 @@
 pipeline {
   agent any
   stages {
-//     stage ('Testing') {
-//       steps {
-//           git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
-//           //sh ''' cd app/adservice
-//                   ls
-//                   sudo docker --version
-//                   sudo docker build -t delalixx/adservice .
-//                   sudo docker push delalixx/adservice
-//                   '''
-//       }
-//     }
+    stage ('Testing') {
+      steps {
+          git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/Delali97/Google-Kubernetes-boilerplate.git'
+          sh ''' cd app/adservice
+                  ls
+                  sudo docker --version
+                  sudo docker build -t delalixx/adservice .
+                  sudo docker push delalixx/adservice
+                  '''
+         sh ''' cd app/frontend
+                  ls
+                  sudo docker --version
+                  sudo docker build -t delalixx/frontend .
+                  sudo docker push delalixx/frontend
+                  '''
+      }
+    }
     stage ('Create Deploy to Yaml file') {
       steps {
           withCredentials([aws(credentialsId: 'aws-credentials', region: 'us-east-2')]) {
