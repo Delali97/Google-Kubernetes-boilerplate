@@ -32,3 +32,39 @@ spec:
         env:
         - name: MESSAGE
           value: Hello from my first microservices deployment!
+#### END of ADSERVICE ###
+#------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5050
+    targetPort: 5050
+  selector:
+    app: frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: adservice
+        image: delalixx/frontend:latest
+        ports:
+        - containerPort: 5050
+        env:
+        - name: MESSAGE
+          value: Hello from my first microservices front end deployment!
